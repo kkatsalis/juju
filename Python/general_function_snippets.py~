@@ -1,0 +1,10 @@
+from jujuclient import Environment
+env = Environment.connect('manual')
+
+
+#print(env.facades)
+
+#print(env.charms.list())
+
+print(env.users.list())
+

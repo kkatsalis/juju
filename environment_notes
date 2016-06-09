@@ -1,0 +1,116 @@
+    JUJU Environment
+------------------------------
+
+1) Configure the cloud Provider: 
+    # cat ~/.juju/environments.yaml
+
+* automatically generate the file in this way:
+    # juju generate-config
+
+* KVM 
+    
+    ** Use KVM under manula provider     
+        #cat ~/.juju/environments.yaml
+
+    (KVM:website)
+    kvm:
+        type: local
+        container: kvm
+
+
+    (KVM:Navid)
+    manual:
+        type: manual
+        # bootstrap-host holds the host name of the machine where the
+        # bootstrap machine agent will be started.
+        bootstrap-host: 192.168.12.174
+
+
+    ** Connect to the VM
+        #juju ssh 1
+
+    ** Managing KVM-based LXC containers: 
+        *** To add LXC containers to the KVM guest (machine #1):
+            #juju add-machine lxc:1
+
+        *** To remove one of these containers (1/lxc/0 here):
+            #juju destroy-machine --force 1/lxc/0
+
+
+* LXC: 
+
+* Use LXC containers:
+    #juju switch local
+
+* Juju caching for LXC images
+    ** The first time a host (local or remote) needs a LXC image it will be downloaded from 
+        http://cloud-images.ubuntu.com and cached on the state server (MongoDB). 
+    ** The same image will be copied to the host's filesystem (/var/cache/lxc) if LXC host caching is enabled (the default).
+
+    ** To see all cached images:
+        #juju cached-images list
+
+
+2) Multpile Providers
+    #juju switch local
+
+3) Bootstrap Environment:
+"This is a cloud instance that Juju will use to deploy and manage services."
+    #juju bootstrap
+
+4) Check running environent
+	#cat ~/.juju/current-environment
+
+
+5) Deploy on specific environment
+	#juju deploy mysql -e mycloud   # deploys mysql charm on the cloud defined by 'mycloud'
+
+6) Destroy the environment : emove all running services, their associated instances and the bootstrap node itself:
+	#juju destroy-environment <environment>
+
+7) Display all the environment's configured options.
+	#juju get-environment
+
+8) Set environment Values: The set-environment command will set a configuration option to the specified value. 
+   For example, you can set the default series that charms are deployed with to trusty like this:
+	# juju set-environment default-series=trusty
+
+9) Set a configuration option to the default value: The unset-environment command will set a configuration option to the default value. It acts as a reset. 
+	Options without default value are removed. It is an error to unset a required option. For example, 
+	you can unset the default series that charms are deployed with (so that the juju store can choose the best series for a charm):
+	#juju unset-environment default-series
+	
+	
+	
+10 ) Commands Reference: 	
+	#juju environment [options] <command> ...
+
+options:
+
+--description (= false)
+-h, --help (= false) show help on a command or other topic
+
+"juju environment" provides commands to interact with the Juju environment.
+
+subcommands:
+
+get - view environment values
+get-constraints - view constraints on the environment
+help - show help on a command or other topic
+jenv - import previously generated Juju environment files
+retry-provisioning - retries provisioning for failed machines
+set - replace environment values
+set-constraints - set constraints on the environment
+unset - unset environment values
+
+
+
+
+
+
+
+
+
+
+
+

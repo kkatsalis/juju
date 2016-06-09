@@ -1,0 +1,15 @@
+JUJU General
+******************
+
+* Find the login password
+    #juju api-info --password password
+
+* Check Status
+    #juju status --format tabular
+
+* juju version
+	#juju version [options]
+
+	options:
+		--format (= smart) specify output format (json|smart|yaml)
+		-o, --output (= "") specify an output file
