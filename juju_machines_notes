@@ -1,0 +1,44 @@
+
+----------------------------------------
+            JUJU Machines
+----------------------------------------
+
+- Create machine
+
+	#juju machine add                      (starts a new machine)
+	#juju machine add -n 2                 (starts 2 new machines)
+	#juju machine add lxc                  (starts a new machine with an lxc container)
+	#juju machine add lxc -n 2             (starts 2 new machines with an lxc container)
+	#juju machine add lxc:4                (starts a new lxc container on machine 4)
+	#juju machine add --constraints mem=8G (starts a machine with at least 8GB RAM)
+	#juju machine add ssh:user@10.10.0.3   (manually provisions a machine with ssh)
+	#juju machine add zone=us-east-1a      (start a machine in zone us-east-1a on AWS)
+	#juju machine add maas2.name           (acquire machine maas2.name on MAAS)
+
+
+- Remove machine
+	
+	purpose:remove machines from the environment
+	#juju remove-machine [options] <machine> ...
+
+	options:
+	-e, --environment (= "") juju environment to operate in
+	--force (= false) completely remove machine and all dependencies
+
+	#juju remove-machine 2
+	#juju remove-machine 2/kvm/0
+	
+	
+		
+- Destroy Machine
+
+	purpose:destroy machines from the environment
+	#juju destroy-machine  [options] <machine> ...
+
+	options:
+	-e, --environment (= "") juju environment to operate in
+	--force (= false) completely remove machine and all dependencies
+
+	#juju destroy-machine 2
+	#juju destroy-machine 2/kvm/0
+	
