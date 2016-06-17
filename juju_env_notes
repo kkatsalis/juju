@@ -1,5 +1,6 @@
-    JUJU Environment
-------------------------------
+----------------------------------------
+            JUJU Environment
+----------------------------------------
 
 1) Configure the cloud Provider: 
     # cat ~/.juju/environments.yaml
@@ -7,13 +8,14 @@
 * automatically generate the file in this way:
     # juju generate-config
 
-* KVM 
-    
+    --------------------------------
+                 KVM 
+    -------------------------------    
     ** Use KVM under manula provider     
         #cat ~/.juju/environments.yaml
 
     (KVM:website)
-    kvm:
+    local:
         type: local
         container: kvm
 
@@ -36,19 +38,20 @@
         *** To remove one of these containers (1/lxc/0 here):
             #juju destroy-machine --force 1/lxc/0
 
+        -------------------------------
+                    LXC: 
+        -------------------------------
+        
+        * Use LXC containers:
+            #juju switch local
 
-* LXC: 
+        * Juju caching for LXC images
+            ** The first time a host (local or remote) needs a LXC image it will be downloaded from 
+                http://cloud-images.ubuntu.com and cached on the state server (MongoDB). 
+            ** The same image will be copied to the host's filesystem (/var/cache/lxc) if LXC host caching is enabled (the default).
 
-* Use LXC containers:
-    #juju switch local
-
-* Juju caching for LXC images
-    ** The first time a host (local or remote) needs a LXC image it will be downloaded from 
-        http://cloud-images.ubuntu.com and cached on the state server (MongoDB). 
-    ** The same image will be copied to the host's filesystem (/var/cache/lxc) if LXC host caching is enabled (the default).
-
-    ** To see all cached images:
-        #juju cached-images list
+            ** To see all cached images:
+                #juju cached-images list
 
 
 2) Multpile Providers

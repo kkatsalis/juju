@@ -1,10 +1,12 @@
-JUJU General
-******************
+************************************
+            JUJU General
+************************************
 
 * Find the login password
     #juju api-info --password password
 
 * Check Status
+    #juju status
     #juju status --format tabular
 
 * juju version

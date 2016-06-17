@@ -1,6 +1,52 @@
-KVM
-------------------
-check Installation: virsh -c qemu:///system list
+*******************************************
+				KVM
+*******************************************
 
-//Check List
-virsh list --all
+---------------------------------
+     	Hypervisor (Host)
+---------------------------------
+
+* check Installation: 
+    #virsh -c qemu:///system list
+
+
+* Hypervisor and Host
+	#virsh list --all
+
+* Get KVM version 
+	#virsh version
+
+* Get KVM Hypervisor(Host) Memory info
+	#virsh nodememstats
+
+ * Get KVM Hypervisor CPU info
+ 	#virsh nodecpustats
+    #virsh nodecpustats –percent   //for percentage
+
+ * Get individual CPU
+	#virsh nodecpustats --cpu 1
+	
+ * To get all the networks available for KVM hypervisor
+	#virsh net-list
+
+* To get info of particular network use below command
+	#virsh net-info default
+
+
+---------------------------------------------
+	Get KVM Guest machine details
+--------------------------------------------
+	
+* Get Hardware information of a KVM guest machine
+	#virsh dominfo vmName
+
+* Get guest machine CPU details like how many vCPU’s etc.
+	#virsh vcpucount vmName
+
+* Get guest machine RAM details
+	#virsh dommemstat vmName
+	
+* List all networks available for a VM
+	#virsh domiflist vmName
+
+
