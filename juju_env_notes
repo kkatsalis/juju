@@ -70,6 +70,8 @@
 
 6) Destroy the environment : emove all running services, their associated instances and the bootstrap node itself:
 	#juju destroy-environment <environment>
+	#juju destroy-environment local --force
+
 
 7) Display all the environment's configured options.
 	#juju get-environment

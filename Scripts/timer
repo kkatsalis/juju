@@ -1,0 +1,30 @@
+#!/bin/bash
+
+timestamp() {
+  date +"%s"
+}
+
+echo "********* Create VM *********"
+
+START="$(timestamp)"
+echo "started at:"$START
+
+
+SOURCE="machine-45      running"
+#SOURCE="running"
+
+y=0
+
+while [ $y != 1 ]
+do
+OUTPUT="$(virsh list --all)"
+ if [[ "${OUTPUT}" == *"$SOURCE"* ]] 
+ then
+  	y=1
+	END="$(timestamp)"
+	echo "Finished at:"$END
+	break
+ fi
+done
+
+echo "$(($END-$START))"
