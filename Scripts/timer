@@ -10,7 +10,7 @@ START="$(timestamp)"
 echo "started at:"$START
 
 
-SOURCE="machine-45      running"
+SOURCE="machine-108     running"
 #SOURCE="running"
 
 y=0
